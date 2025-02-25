@@ -1,10 +1,13 @@
 #include <iostream> 
+#include <chrono>     
+#include <iomanip> 
 #include "myvector.h" 
 #include "mylist.h" 
-#include <chrono>     
-
 
 using namespace std;
+
+auto start = high_resolution_clock::now();
+
 
 // Default function for getCapacity(): Will return a value of zero for capacity for the containers that do not have capacity() function.
 inline int getCapacity(const List&) 
@@ -89,6 +92,16 @@ void print(C& v)
 {
     cout << "print: ";
     v.print();
+}
+
+template <typename F>
+long long measureTime(F func)
+{
+    auto start = high_resolution_clock::now();
+    func();
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start).count();
+    return duration
 }
 
 
