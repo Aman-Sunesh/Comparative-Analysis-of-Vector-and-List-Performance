@@ -117,6 +117,20 @@ int List::size() const
     return count;
 }
 
+int List::capacity() const
+{
+    Node* current = head;
+    int count = 0;
+
+    while (current != nullptr)
+    {
+        current = current->next;
+        count++;
+    }
+
+    return count;
+}
+
 void List::print() const
 {
     Node* current = head;

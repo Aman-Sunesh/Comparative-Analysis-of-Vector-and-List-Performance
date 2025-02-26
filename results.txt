@@ -1,0 +1,13 @@
+Vector Testing:
+Time to remove_back: 35 nanoseconds
+
+Time to remove_back: 35 nanoseconds
+
+Time to remove_back: 291 nanoseconds
+
+Time to remove_back: 2264 nanoseconds
+
+Time to remove_back: 23634 nanoseconds
+
+Time to remove_back: 244276 nanoseconds
+

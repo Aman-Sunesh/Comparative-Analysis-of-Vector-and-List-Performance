@@ -6,24 +6,10 @@
 
 using namespace std;
 
-// Default function for getCapacity(): Will return a value of zero for capacity for the containers that do not have capacity() function.
-inline int getCapacity(const List&) 
-{
-    return 0;
-}
-
-// Overloaded function for vector, which has capacity() function.
-inline int getCapacity(const Vector& v) 
-{
-    return v.capacity();
-}
-
 template <class C>
 void show(C& v)
 {
-    int capacity = getCapacity(v);
-
-    cout << "Size/Cap: " << v.size() << '/' << capacity << ": ";
+    cout << "Size/Cap: " << v.size() << '/' << v.capacity() << ": ";
     v.print();
     cout << '\n'; 
 }

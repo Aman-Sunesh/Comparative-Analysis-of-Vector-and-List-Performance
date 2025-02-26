@@ -25,6 +25,7 @@ struct List
     void pop_back();
     Payload& operator[](int i);
     int size() const;
+    int capacity() const;
     void print() const;
     ~List();
 };

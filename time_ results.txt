@@ -1,0 +1,148 @@
+Vector Testing:
+
+Size 1:
+Time to fill_back: 402 nanoseconds
+Time to fill_front: 109901 nanoseconds
+Time to remove_back: 36 nanoseconds
+Time to remove_front: 31 nanoseconds
+Time to modify: 30 nanoseconds
+
+
+Size 10:
+Time to fill_back: 3830 nanoseconds
+Time to fill_front: 12489399 nanoseconds
+Time to remove_back: 106 nanoseconds
+Time to remove_front: 36 nanoseconds
+Time to modify: 34 nanoseconds
+
+
+Size 100:
+Time to fill_back: 35295 nanoseconds
+Time to fill_front: 162827723 nanoseconds
+Time to remove_back: 631 nanoseconds
+Time to remove_front: 50 nanoseconds
+Time to modify: 70 nanoseconds
+
+
+Size 1000:
+Time to fill_back: 212336 nanoseconds
+Time to fill_front: 1797844659 nanoseconds
+Time to remove_back: 5169 nanoseconds
+Time to remove_front: 50 nanoseconds
+Time to modify: 60 nanoseconds
+
+
+Size 10000:
+Time to fill_back: 1824513 nanoseconds
+Time to fill_front: 17178039385 nanoseconds
+Time to remove_back: 49642 nanoseconds
+Time to remove_front: 60 nanoseconds
+Time to modify: 60 nanoseconds
+
+
+Size 100000:
+Time to fill_back: 33629177 nanoseconds
+Time to fill_front: 1214292024988 nanoseconds
+Time to remove_back: 493791 nanoseconds
+Time to remove_front: 50 nanoseconds
+Time to modify: 60 nanoseconds
+
+
+List Testing:
+
+Size 1:
+Time to fill_back: 1062 nanoseconds
+Time to fill_front: 418 nanoseconds
+Time to remove_back: 3798 nanoseconds
+Time to remove_front: 34 nanoseconds
+Time to modify: 30 nanoseconds
+
+
+Size 10:
+Time to fill_back: 90191 nanoseconds
+Time to fill_front: 2458 nanoseconds
+Time to remove_back: 363015 nanoseconds
+Time to remove_front: 34 nanoseconds
+Time to modify: 30 nanoseconds
+
+
+Size 100:
+Time to fill_back: 56395 nanoseconds
+Time to fill_front: 35907 nanoseconds
+Time to remove_back: 39975 nanoseconds
+Time to remove_front: 40 nanoseconds
+Time to modify: 60 nanoseconds
+
+
+Size 1000:
+Time to fill_back: 1294464 nanoseconds
+Time to fill_front: 213679 nanoseconds
+Time to remove_back: 4400526 nanoseconds
+Time to remove_front: 40 nanoseconds
+Time to modify: 40 nanoseconds
+
+
+Size 10000:
+Time to fill_back: 107905128 nanoseconds
+Time to fill_front: 2146493 nanoseconds
+Time to remove_back: 509852779 nanoseconds
+Time to remove_front: 90 nanoseconds
+Time to modify: 80 nanoseconds
+
+
+Size 100000:
+Time to fill_back: 9851851235 nanoseconds
+Time to fill_front: 25123303 nanoseconds
+Time to remove_back: 37489492190 nanoseconds
+Time to remove_front: 80 nanoseconds
+Time to modify: 80 nanoseconds
+
+
+List Testing:
+
+Size 1:
+Time to fill_back: 1062 nanoseconds
+Time to fill_front: 418 nanoseconds
+Time to remove_back: 3798 nanoseconds
+Time to remove_front: 34 nanoseconds
+Time to modify: 30 nanoseconds
+
+
+Size 10:
+Time to fill_back: 90191 nanoseconds
+Time to fill_front: 2458 nanoseconds
+Time to remove_back: 363015 nanoseconds
+Time to remove_front: 34 nanoseconds
+Time to modify: 30 nanoseconds
+
+
+Size 100:
+Time to fill_back: 56395 nanoseconds
+Time to fill_front: 35907 nanoseconds
+Time to remove_back: 39975 nanoseconds
+Time to remove_front: 40 nanoseconds
+Time to modify: 60 nanoseconds
+
+
+Size 1000:
+Time to fill_back: 1294464 nanoseconds
+Time to fill_front: 213679 nanoseconds
+Time to remove_back: 4400526 nanoseconds
+Time to remove_front: 40 nanoseconds
+Time to modify: 40 nanoseconds
+
+
+Size 10000:
+Time to fill_back: 107905128 nanoseconds
+Time to fill_front: 2146493 nanoseconds
+Time to remove_back: 509852779 nanoseconds
+Time to remove_front: 90 nanoseconds
+Time to modify: 80 nanoseconds
+
+
+Size 100000:
+Time to fill_back: 9851851235 nanoseconds
+Time to fill_front: 25123303 nanoseconds
+Time to remove_back: 37489492190 nanoseconds
+Time to remove_front: 80 nanoseconds
+Time to modify: 80 nanoseconds
