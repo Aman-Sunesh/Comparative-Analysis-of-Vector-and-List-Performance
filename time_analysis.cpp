@@ -128,20 +128,39 @@ void run(const string& type, ostream &out) {
         }
 
         out << "\nSize " << n << ":\n";
-        out << "Time to fill_back: " << test_func_with_size(fill_back<Container>, c, n, iterations) << " nanoseconds\n";
-        out << "Time to fill_front: " << test_func_with_size(fill_front<Container>, c, n, iterations) << " nanoseconds\n";
-        out << "Time to remove_back: " << test_func(remove_back<Container>, c, iterations) << " nanoseconds\n";
-        out << "Time to remove_front: " << test_func(remove_front<Container>, c, iterations) << " nanoseconds\n";
-        out << "Time to modify: " << test_func(modify<Container>, c, iterations) << " nanoseconds\n";
+
+        {
+            Container c;
+            out << "Time to fill_back: " << test_func_with_size(fill_back<Container>, c, n, iterations) << " nanoseconds\n";
+            out << "Time to fill_front: " << test_func_with_size(fill_front<Container>, c, n, iterations) << " nanoseconds\n";
+        }
+
+        {
+            Container c;
+            fill_back(c, n);
+            out << "Time to remove_back: " << test_func(remove_back<Container>, c, iterations) << " nanoseconds\n";
+        }
+
+        {
+            Container c;
+            fill_back(c, n);
+            out << "Time to remove_front: " << test_func(remove_front<Container>, c, iterations) << " nanoseconds\n";
+        }
+
+        {
+            Container c;
+            fill_back(c, n);
+            out << "Time to modify: " << test_func(modify<Container>, c, iterations) << " nanoseconds\n";
+        }
+
         out << endl;
-        remove_back(c); 
     }
 }
 
 
 int main() 
 { 
-    ofstream outfile("time_results.txt");
+    ofstream outfile("time_resuflts.txt");
 
     if (!outfile.is_open()) 
     {
