@@ -1,0 +1,170 @@
+Vector Testing:
+
+Size 1:
+Time to fill_back: 1129 nanoseconds
+Time to fill_front: 164638 nanoseconds
+Time to remove_back: 35 nanoseconds
+Time to remove_front: 35 nanoseconds
+Time to modify: 74 nanoseconds
+Time to reverse 1 elements: 161 ns
+Time to find an element: 662 ns
+Time to call empty() on an empty container: 60 ns
+Time to call empty() on a non-empty container: 30 ns
+Time to call front(): 251 ns
+Time to call back(): 170 ns
+
+
+Size 10:
+Time to fill_back: 5917 nanoseconds
+Time to fill_front: 18050933 nanoseconds
+Time to remove_back: 35 nanoseconds
+Time to remove_front: 37 nanoseconds
+Time to modify: 449 nanoseconds
+Time to reverse 10 elements: 3336 ns
+Time to find an element: 912 ns
+Time to call empty() on an empty container: 70 ns
+Time to call empty() on a non-empty container: 30 ns
+Time to call front(): 181 ns
+Time to call back(): 201 ns
+
+
+Size 100:
+Time to fill_back: 52487 nanoseconds
+Time to fill_front: 1754489 nanoseconds
+Time to remove_back: 531 nanoseconds
+Time to remove_front: 97161 nanoseconds
+Time to modify: 7684 nanoseconds
+Time to reverse 100 elements: 21400 ns
+Time to find an element: 481 ns
+Time to call empty() on an empty container: 50 ns
+Time to call empty() on a non-empty container: 40 ns
+Time to call front(): 130 ns
+Time to call back(): 131 ns
+
+
+Size 1000:
+Time to fill_back: 441573 nanoseconds
+Time to fill_front: 154999085 nanoseconds
+Time to remove_back: 4057 nanoseconds
+Time to remove_front: 9138417 nanoseconds
+Time to modify: 72735 nanoseconds
+Time to reverse 1000 elements: 172051 ns
+Time to find an element: 911 ns
+Time to call empty() on an empty container: 70 ns
+Time to call empty() on a non-empty container: 50 ns
+Time to call front(): 190 ns
+Time to call back(): 200 ns
+
+
+Size 10000:
+Time to fill_back: 5694931 nanoseconds
+Time to fill_front: 17685976692 nanoseconds
+Time to remove_back: 38832 nanoseconds
+Time to remove_front: 992880517 nanoseconds
+Time to modify: 714932 nanoseconds
+Time to reverse 10000 elements: 2937994 ns
+Time to find an element: 912 ns
+Time to call empty() on an empty container: 70 ns
+Time to call empty() on a non-empty container: 50 ns
+Time to call front(): 200 ns
+Time to call back(): 201 ns
+
+
+Size 100000:
+Time to fill_back: 50813897 nanoseconds
+Time to fill_front: 1764696972602 nanoseconds
+Time to remove_back: 386440 nanoseconds
+Time to remove_front: 97838089009 nanoseconds
+Time to modify: 7130135 nanoseconds
+Time to reverse 100000 elements: 23258625 ns
+Time to find an element: 1503 ns
+Time to call empty() on an empty container: 60 ns
+Time to call empty() on a non-empty container: 230 ns
+Time to call front(): 361 ns
+Time to call back(): 451 ns
+
+List Testing:
+
+Size 1:
+Time to fill_back: 1318 nanoseconds
+Time to fill_front: 418 nanoseconds
+Time to remove_back: 40 nanoseconds
+Time to remove_front: 38 nanoseconds
+Time to modify: 77 nanoseconds
+Time to reverse 1 elements: 270 ns
+Time to find an element: 581 ns
+Time to call empty() on an empty container: 90 ns
+Time to call empty() on a non-empty container: 31 ns
+Time to call front(): 200 ns
+Time to call back(): 221 ns
+
+
+Size 10:
+Time to fill_back: 105201 nanoseconds
+Time to fill_front: 3830 nanoseconds
+Time to remove_back: 40 nanoseconds
+Time to remove_front: 38 nanoseconds
+Time to modify: 503 nanoseconds
+Time to reverse 10 elements: 1713 ns
+Time to find an element: 1051 ns
+Time to call empty() on an empty container: 80 ns
+Time to call empty() on a non-empty container: 61 ns
+Time to call front(): 241 ns
+Time to call back(): 221 ns
+
+
+Size 100:
+Time to fill_back: 50234 nanoseconds
+Time to fill_front: 36047 nanoseconds
+Time to remove_back: 13325 nanoseconds
+Time to remove_front: 3196 nanoseconds
+Time to modify: 28182 nanoseconds
+Time to reverse 100 elements: 31539 ns
+Time to find an element: 721 ns
+Time to call empty() on an empty container: 40 ns
+Time to call empty() on a non-empty container: 40 ns
+Time to call front(): 130 ns
+Time to call back(): 310 ns
+
+
+Size 1000:
+Time to fill_back: 1629476 nanoseconds
+Time to fill_front: 362416 nanoseconds
+Time to remove_back: 1037253 nanoseconds
+Time to remove_front: 34425 nanoseconds
+Time to modify: 2204848 nanoseconds
+Time to reverse 1000 elements: 3988030 ns
+Time to find an element: 3026 ns
+Time to call empty() on an empty container: 80 ns
+Time to call empty() on a non-empty container: 60 ns
+Time to call front(): 311 ns
+Time to call back(): 2575 ns
+
+
+Size 10000:
+Time to fill_back: 131854863 nanoseconds
+Time to fill_front: 3619895 nanoseconds
+Time to remove_back: 114220696 nanoseconds
+Time to remove_front: 314857 nanoseconds
+Time to modify: 250112591 nanoseconds
+Time to reverse 10000 elements: 355901857 ns
+Time to find an element: 54672 ns
+Time to call empty() on an empty container: 71 ns
+Time to call empty() on a non-empty container: 141 ns
+Time to call front(): 411 ns
+Time to call back(): 33302 ns
+
+
+Size 100000:
+Time to fill_back: 14657708527 nanoseconds
+Time to fill_front: 40130402 nanoseconds
+Time to remove_back: 29918448104 nanoseconds
+Time to remove_front: 3248722 nanoseconds
+Time to modify: 53979620177 nanoseconds
+Time to reverse 100000 elements: 35007695883 ns
+Time to find an element: 359219 ns
+Time to call empty() on an empty container: 90 ns
+Time to call empty() on a non-empty container: 190 ns
+Time to call front(): 571 ns
+Time to call back(): 402290 ns
+

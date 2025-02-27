@@ -14,8 +14,12 @@ struct Vector
     void push_front(const Payload& x);
     void pop_front();
     Payload& operator[](int i);
+    Payload& operator[](int i) const;
     int size() const;
     int capacity() const;
+    bool empty() const;
+    Payload front() const;
+    Payload back() const;
     void print() const;
     ~Vector();
 

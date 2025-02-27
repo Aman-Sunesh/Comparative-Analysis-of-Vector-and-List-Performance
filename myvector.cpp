@@ -85,7 +85,45 @@ void Vector::pop_front()
     }
 }
 
+bool Vector::empty() const
+{
+    return vec_size == 0;
+}
+
+
+Payload Vector::front() const
+{
+    if (empty())
+    {
+        cout << "Error: Vector is empty!" << endl;
+        return Payload();
+    }
+
+    return arr[0];
+}
+
+
+Payload Vector::back() const
+{
+    if (empty())
+    {
+        cout << "Error: Vector is empty!" << endl;
+        return Payload();
+    }
+    return arr[vec_size - 1];
+}
+
 Payload& Vector::operator[](int i)
+{
+    if (i < 0 || i >= vec_size)
+    {
+        cout << "Error: Index out of range\n";
+    }
+    
+    return arr[i];
+}
+
+Payload& Vector::operator[](int i) const
 {
     if (i < 0 || i >= vec_size)
     {

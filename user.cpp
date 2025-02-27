@@ -1,8 +1,6 @@
 #include <iostream> 
 #include "myvector.h" 
 #include "mylist.h" 
-#include <chrono>     
-
 
 using namespace std;
 
@@ -70,6 +68,34 @@ void modify(C& v)
     }
 }
 
+template <typename Src, typename Dest>
+void reverse(const Src& src, Dest& dest)
+{
+    int size_ = src.size();
+
+    for (int i = size_ - 1; i >= 0; i--)
+    {
+        dest.push_back(src[i]);
+    }
+}
+
+
+template <typename Container>
+const Payload* find_in(const Container& c, string name)
+{
+    int size_ = c.size();
+
+    for (int i = 0; i < size_; i++)
+    {
+        if (c[i].name == name)
+        {
+            return &c[i];
+        }
+    }
+
+    return nullptr;
+}
+
 template <class C>
 void print(C& v)
 {
@@ -79,11 +105,23 @@ void print(C& v)
 
 
 template <class Container>
-void run(const std::string& message, int n) {
+void run(const string& message, int n) {
     cout << message << "\n";
     Container c;
+    
+    cout << ("\n", c.empty() ? "Yes, it's empty." : "No, it's not empty.") << "\n";
+    
+
     fill_back(c, n);
     show(c);
+    
+    cout << "\nTesting front() and back() functions:\n";
+    cout << "Front element: ";
+    c.front().print();
+    cout << "\nBack element: ";
+    c.back().print();
+    cout << "\n";
+    
     modify(c);
     show(c);
     modify(c);
@@ -95,8 +133,28 @@ void run(const std::string& message, int n) {
     fill_front(c, n);
     show(c);
     print(c);
+    cout << ("\n", c.empty() ? "Yes, it's empty." : "No, it's not empty.") << "\n";
+
+    Container rev;
+    reverse(c, rev);
+    cout << "\nReversed container:\n";
+    show(rev);
+    
+    string search = "z1";
+    const Payload* found = find_in(c, search);
+    if (found) 
+    {
+        cout << "\nFound element with name \"" << search << "\": "; found->print();
+        cout << "\n";
+    } 
+    
+    else 
+    {
+        cout << "\nElement with name \"" << search << "\" not found.\n";
+    }
+
     remove_front(c);
-    cout << "\n";
+    cout << "\nAfter remove_front:\n";
     show(c);
     cout << "\n";
 }
@@ -105,4 +163,6 @@ int main()
 { 
     run<Vector>("Vector", 10); 
     run<List>("List", 10); 
+
+    return 0;
 } 

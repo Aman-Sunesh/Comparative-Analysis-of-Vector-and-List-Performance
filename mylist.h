@@ -23,7 +23,11 @@ struct List
     void pop_front();
     void push_back(const Payload& x);
     void pop_back();
+    bool empty() const;
+    Payload front() const;
+    Payload back() const;
     Payload& operator[](int i);
+    Payload& operator[](int i) const;
     int size() const;
     int capacity() const;
     void print() const;
