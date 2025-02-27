@@ -1,0 +1,18 @@
+
+Time to reverse from Vector to List (1 elements): 812 ns
+Time to reverse from List to Vector (1 elements): 311 ns
+
+Time to reverse from Vector to List (10 elements): 1613 ns
+Time to reverse from List to Vector (10 elements): 3496 ns
+
+Time to reverse from Vector to List (100 elements): 17673 ns
+Time to reverse from List to Vector (100 elements): 26199 ns
+
+Time to reverse from Vector to List (1000 elements): 1214727 ns
+Time to reverse from List to Vector (1000 elements): 1131622 ns
+
+Time to reverse from Vector to List (10000 elements): 75018463 ns
+Time to reverse from List to Vector (10000 elements): 114840435 ns
+
+Time to reverse from Vector to List (100000 elements): 7288968742 ns
+Time to reverse from List to Vector (100000 elements): 12689623491 ns

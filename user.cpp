@@ -164,5 +164,25 @@ int main()
     run<Vector>("Vector", 10); 
     run<List>("List", 10); 
 
+    {
+        // Reverse from Vector to List.
+        Vector vec;
+        fill_back(vec, 10);
+        List lst;
+        reverse(vec, lst);
+        cout << "\nReversed from Vector to List:\n";
+        show(lst);
+    }
+    
+    {
+        // Reverse from List to Vector.
+        List lst;
+        fill_back(lst, 10);
+        Vector vec;
+        reverse(lst, vec);
+        cout << "\nReversed from List to Vector:\n";
+        show(vec);
+    }
+
     return 0;
 } 

@@ -260,7 +260,7 @@ void run(const string& type, ostream &out) {
 
 int main() 
 { 
-    ofstream outfile("time_results_inlab.txt");
+    ofstream outfile("time_results_inlab2.txt");
 
     if (!outfile.is_open()) 
     {
@@ -268,9 +268,39 @@ int main()
         return 1;
     }
 
-    run<Vector>("Vector", outfile);
-    run<List>("List", outfile);
+    //run<Vector>("Vector", outfile);
+    //run<List>("List", outfile);
 
+    int sizes[] = {1, 10, 100, 1000, 10000, 100000};
+    for (int n : sizes) 
+    {
+        {
+            Vector src;
+            fill_back(src, n);
+            List dest;
+            auto start = high_resolution_clock::now();
+            reverse(src, dest);
+            auto stop = high_resolution_clock::now();
+            long long timeVecToList = duration_cast<nanoseconds>(stop - start).count();
+            outfile << "\nTime to reverse from Vector to List (" << n << " elements): " 
+                    << timeVecToList << " ns\n";
+            outfile.flush();
+        }
+
+        {
+            List src;
+            fill_back(src, n);
+            Vector dest;
+            auto start = high_resolution_clock::now();
+            reverse(src, dest);
+            auto stop = high_resolution_clock::now();
+            long long timeListToVector = duration_cast<nanoseconds>(stop - start).count();
+            outfile << "Time to reverse from List to Vector (" << n << " elements): " 
+                    << timeListToVector << " ns\n";
+            outfile.flush();
+        }
+    }
+    
     outfile.close();
     return 0;
 } 
