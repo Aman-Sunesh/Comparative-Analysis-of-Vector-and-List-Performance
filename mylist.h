@@ -32,4 +32,53 @@ struct List
     int capacity() const;
     void print() const;
     ~List();
+
+    struct ListIterator
+    {
+        Node* node;
+
+        ListIterator(Node* node)
+        {
+            this->node = node;
+        }
+
+        ListIterator& operator ++()
+        {
+            if (node != nullptr)
+            {
+                node = node->next;
+            }
+            
+            return *this;
+        }
+
+        bool operator !=(const ListIterator& node2) const
+        {
+            if (this->node != node2.node)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+        }
+
+        Payload& operator *()
+        {
+            return node->data;
+        }
+        
+    };
+
+    ListIterator begin()
+    {
+        return ListIterator(head);
+    }
+
+    ListIterator end()
+    {
+        return ListIterator(nullptr);
+    }
 };

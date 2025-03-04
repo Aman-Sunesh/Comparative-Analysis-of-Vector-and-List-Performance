@@ -23,22 +23,22 @@ struct Vector
     void print() const;
     ~Vector();
 
-    struct Iterator
+    struct VectorIterator
     {
         Payload* ptr;
 
-        Iterator(Payload* ptr)
+        VectorIterator(Payload* ptr)
         {
             this->ptr = ptr;
         }
 
-        Iterator& operator ++()
+        VectorIterator& operator ++()
         {
             ++ptr;
             return *this;
         }
 
-        bool operator !=(const Iterator& ptr2)
+        bool operator !=(const VectorIterator& ptr2)
         {
             if (this->ptr != ptr2.ptr)
             {
@@ -58,14 +58,14 @@ struct Vector
         
     };
 
-    Iterator begin()
+    VectorIterator begin()
     {
-        return Iterator(arr);
+        return VectorIterator(arr);
     }
 
-    Iterator end()
+    VectorIterator end()
     {
-        return Iterator(arr + vec_size);
+        return VectorIterator(arr + vec_size);
     }
 
 }; 

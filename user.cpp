@@ -68,6 +68,22 @@ void modify(C& v)
     }
 }
 
+template <class C>
+void modify_it(C& v)
+{
+    for (auto it = v.begin(); it != v.end(); ++it)
+    {
+        string data = (*it).name;
+
+        if (!data.empty())
+        {
+            (*it).name += '!';
+        }
+    }
+}
+
+
+
 template <typename Src, typename Dest>
 void reverse(const Src& src, Dest& dest)
 {
@@ -96,93 +112,27 @@ const Payload* find_in(const Container& c, string name)
     return nullptr;
 }
 
-template <class C>
-void print(C& v)
-{
-    cout << "print: ";
-    v.print();
-}
+template <class C> void print(C & v) 
+{ 
+    cout << "print:"; 
 
-
-template <class Container>
-void run(const string& message, int n) {
-    cout << message << "\n";
-    Container c;
+    for ( auto & i : v )  
+        cout << ' ' << i.name;
     
-    cout << ("\n", c.empty() ? "Yes, it's empty." : "No, it's not empty.") << "\n";
-    
-
-    fill_back(c, n);
-    show(c);
-    
-    cout << "\nTesting front() and back() functions:\n";
-    cout << "Front element: ";
-    c.front().print();
-    cout << "\nBack element: ";
-    c.back().print();
-    cout << "\n";
-    
-    modify(c);
-    show(c);
-    modify(c);
-    show(c);
-    modify(c);
-    show(c);
-    remove_back(c);
-    show(c);
-    fill_front(c, n);
-    show(c);
-    print(c);
-    cout << ("\n", c.empty() ? "Yes, it's empty." : "No, it's not empty.") << "\n";
-
-    Container rev;
-    reverse(c, rev);
-    cout << "\nReversed container:\n";
-    show(rev);
-    
-    string search = "z1";
-    const Payload* found = find_in(c, search);
-    if (found) 
-    {
-        cout << "\nFound element with name \"" << search << "\": "; found->print();
-        cout << "\n";
-    } 
-    
-    else 
-    {
-        cout << "\nElement with name \"" << search << "\" not found.\n";
-    }
-
-    remove_front(c);
-    cout << "\nAfter remove_front:\n";
-    show(c);
-    cout << "\n";
+    cout << '\n'; 
 }
 
 int main() 
 { 
-    run<Vector>("Vector", 10); 
-    run<List>("List", 10); 
+    Vector v; 
+    for(int i=0; i<10; i++) 
+        v.push_back(std::to_string(i));  
+    modify_it(v);
+    print(v); 
 
-    {
-        // Reverse from Vector to List.
-        Vector vec;
-        fill_back(vec, 10);
-        List lst;
-        reverse(vec, lst);
-        cout << "\nReversed from Vector to List:\n";
-        show(lst);
-    }
-    
-    {
-        // Reverse from List to Vector.
-        List lst;
-        fill_back(lst, 10);
-        Vector vec;
-        reverse(lst, vec);
-        cout << "\nReversed from List to Vector:\n";
-        show(vec);
-    }
-
-    return 0;
-} 
+    List s; 
+    for(int i=0; i<10; i++) 
+        s.push_front(std::to_string(i));  
+    modify_it(s);
+    print(s); 
+}

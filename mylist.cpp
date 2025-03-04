@@ -97,8 +97,7 @@ Payload List::back() const
 {
     if (empty())
     {
-        cout << "Error: List is empty!" << endl;
-        return Payload();
+        cerr << "Error: List is empty!" << endl;
     }
 
     Node* current = head;
