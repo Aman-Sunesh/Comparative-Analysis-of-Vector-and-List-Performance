@@ -1,103 +1,182 @@
 #include <iostream>
 #include <string>
-#include "myvector.h" // Assuming this header defines a Vector container that holds Payload objects.
-#include "mylist.h"   // Assuming this header defines a List container that holds Payload objects.
+using std::cout;
+using std::string;
 
-using namespace std;
+// Payload class
+struct Payload {
+    string name;
+    Payload() : name("") {}
+    Payload(const string& n) : name(n) {}
+};
 
-// a. Filling a container with push_back() with 10 elements
-template <class C>
-void fill_back(C & container, int n) {
-    for (int i = 0; i < n; ++i) {
-        // Here we assume that push_back() accepts a std::string and that Payload is constructible from std::string.
-        container.push_back("z" + to_string(i));  // Example: "z0", "z1", ...
+// Vector Class with Iterator
+struct Vector {
+    int vec_size;
+    int vec_capacity;
+    Payload *arr;
+
+    Vector() : vec_size(0), vec_capacity(10), arr(new Payload[10]) {}
+
+    void push_back(const Payload& x) {
+        if (vec_size == vec_capacity) {
+            vec_capacity *= 2;
+            Payload* new_arr = new Payload[vec_capacity];
+            for (int i = 0; i < vec_size; ++i) {
+                new_arr[i] = arr[i];
+            }
+            delete[] arr;
+            arr = new_arr;
+        }
+        arr[vec_size++] = x;
     }
-}
 
-// b. Filling a container with push_front() with 10 elements
-template <class C>
-void fill_front(C & container, int n) {
-    for (int i = 0; i < n; ++i) {
-        container.push_front("z" + to_string(i));  // Example: "z0", "z1", ...
+    void pop_back() {
+        if (vec_size > 0) --vec_size;
     }
-}
 
-// c. Removing all elements from the container with pop_back()
-template <class C>
-void remove_back(C & container) {
-    while (container.size() > 0) {
-        container.pop_back();
-    }
-}
+    Payload& operator[](int i) { return arr[i]; }
 
-// d. Removing all elements from the container with pop_front()
-template <class C>
-void remove_front(C & container) {
-    while (container.size() > 0) {
-        container.pop_front();
-    }
-}
+    int size() const { return vec_size; }
 
-// e. Removing the first character of the name of each element
-template <class C>
-void modify(C & container) {
-    for (int i = 0; i < container.size(); ++i) {
-        // Here, container[i] returns a Payload.
-        // We assume that Payload has a method data() that returns a reference to the underlying std::string.
-        Payload & element = container[i];
-        std::string & str = element.name;
-        if (!str.empty()) {
-            str.erase(0, 1);  // Removing the first character
+    int capacity() const { return vec_capacity; }
+
+    bool empty() const { return vec_size == 0; }
+
+    Payload front() const { return arr[0]; }
+
+    Payload back() const { return arr[vec_size - 1]; }
+
+    void print() const {
+        for (int i = 0; i < vec_size; ++i) {
+            cout << arr[i].name << " ";
         }
     }
-}
 
-// f. Printing the size followed by all elements in the container without using print()
+    ~Vector() { delete[] arr; }
+
+    // Iterator for Vector
+    struct VectorIterator {
+        Payload* ptr;
+        VectorIterator(Payload* p) : ptr(p) {}
+        VectorIterator& operator++() { ++ptr; return *this; }
+        bool operator!=(const VectorIterator& other) const { return ptr != other.ptr; }
+        Payload& operator*() { return *ptr; }
+    };
+
+    VectorIterator begin() { return VectorIterator(arr); }
+    VectorIterator end() { return VectorIterator(arr + vec_size); }
+};
+
+// List Class with Iterator
+struct Node {
+    Payload data;
+    Node* next;
+    Node(const Payload& data) : data(data), next(nullptr) {}
+};
+
+struct List {
+    Node* head;
+
+    List() : head(nullptr) {}
+
+    void push_front(const Payload& x) {
+        Node* new_node = new Node(x);
+        new_node->next = head;
+        head = new_node;
+    }
+
+    void pop_front() {
+        if (head) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
+    }
+
+    bool empty() const { return head == nullptr; }
+
+    Payload front() const { return head ? head->data : Payload(); }
+
+    Payload back() const {
+        Node* temp = head;
+        while (temp && temp->next) {
+            temp = temp->next;
+        }
+        return temp ? temp->data : Payload();
+    }
+
+    int size() const {
+        int count = 0;
+        Node* temp = head;
+        while (temp) {
+            ++count;
+            temp = temp->next;
+        }
+        return count;
+    }
+
+    void print() const {
+        Node* temp = head;
+        while (temp) {
+            cout << temp->data.name << " ";
+            temp = temp->next;
+        }
+    }
+
+    // Iterator for List
+    struct ListIterator {
+        Node* ptr;
+        ListIterator(Node* p) : ptr(p) {}
+        ListIterator& operator++() { if (ptr) ptr = ptr->next; return *this; }
+        bool operator!=(const ListIterator& other) const { return ptr != other.ptr; }
+        Payload& operator*() { return ptr->data; }
+    };
+
+    ListIterator begin() { return ListIterator(head); }
+    ListIterator end() { return ListIterator(nullptr); }
+
+    ~List() {
+        while (head) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
+    }
+};
+
+// Modify using iterator
 template <class C>
-void print(C & container) {
-    cout << "print: ";
-    for (int i = 0; i < container.size(); ++i) {
-        // Print the underlying string from the Payload.
-        cout << container[i].name << " ";
+void modify_it(C& container) {
+    for (auto& element : container) {
+        element.name += '!';
     }
 }
 
-// e. Print Size, Capacity, and Container Elements (using container’s own print() method)
+// Print function
 template <class C>
-void show(C & v)
-{
-    cout << "Size/Cap: " << v.size() << '/' << v.capacity() << ": ";
-    v.print();
-    cout << "\n";
+void print(C& container) {
+    cout << "print:";
+    for (auto& element : container) {
+        cout << ' ' << element.name;
+    }
+    cout << '\n';
 }
 
-template <class Container>
-void run(const string & message, int n) {
-    cout << message << "\n";
-    Container c;
-    fill_back(c, n);
-    show(c);
-    modify(c);
-    show(c);
-    modify(c);
-    show(c);
-    modify(c);
-    show(c);
-    remove_back(c);
-    show(c);
-    fill_front(c, n);
-    show(c);
-    print(c);
-    remove_front(c);
-    cout << "\n";
-    show(c);
-    cout << "\n";
-}
+int main() {
+    Vector v;
+    for (int i = 0; i < 10; ++i) {
+        v.push_back(std::to_string(i));
+    }
+    modify_it(v);
+    print(v);
 
-int main() 
-{ 
-    // These calls assume that Vector and List are defined in your headers and store Payload objects.
-    run<Vector>("Vector", 10); 
-    run<List>("List", 10); 
+    List s;
+    for (int i = 0; i < 10; ++i) {
+        s.push_front(std::to_string(i));
+    }
+    modify_it(s);
+    print(s);
+
     return 0;
 }

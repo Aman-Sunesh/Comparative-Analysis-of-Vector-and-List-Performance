@@ -71,14 +71,9 @@ void modify(C& v)
 template <class C>
 void modify_it(C& v)
 {
-    for (auto it = v.begin(); it != v.end(); ++it)
+    for (auto & i : v)
     {
-        string data = (*it).name;
-
-        if (!data.empty())
-        {
-            (*it).name += '!';
-        }
+        i.name += "!";
     }
 }
 
