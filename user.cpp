@@ -1,133 +1,40 @@
 #include <iostream> 
-#include "myvector.h" 
-#include "mylist.h" 
+#include "StackVector.h" 
+#include "StackList.h" 
+#include "QueueVector.h" 
+#include "QueueList.h" 
+#include "payload.h" 
 
-using namespace std;
+using std::cout; 
 
-template <class C>
-void show(C& v)
-{
-    cout << "Size/Cap: " << v.size() << '/' << v.capacity() << ": ";
-    v.print();
-    cout << '\n'; 
-}
-
-template <class C>
-void fill_back(C& v, int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        v.push_back(Payload("z" + std::to_string(i)));
-    }
-}
-
-template <class C>
-void fill_front(C& v, int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        v.push_front(Payload("z" + std::to_string(i)));
-    }
-}
-
-template <class C>
-void remove_back(C& v)
-{
-    int n = v.size();
-
-    for (int i = 0; i < n; i++)
-    {
-        v.pop_back();
-    }
-}
-
-template <class C>
-void remove_front(C& v)
-{
-    int n = v.size();
-
-    for (int i = 0; i < n; i++)
-    {
-        v.pop_front();
-    }
-}
-
-template <class C>
-void modify(C& v)
-{
-    int n = v.size();
-
-    for (int i = 0; i < n; i++)
-    {
-        string data = v[i].name;
-
-        if (!data.empty()) 
-        {  
-            v[i].name = data.substr(1);
-        }
-    }
-}
-
-template <class C>
-void modify_it(C& v)
-{
-    for (auto & i : v)
-    {
-        i.name += "!";
-    }
-}
-
-
-
-template <typename Src, typename Dest>
-void reverse(const Src& src, Dest& dest)
-{
-    int size_ = src.size();
-
-    for (int i = size_ - 1; i >= 0; i--)
-    {
-        dest.push_back(src[i]);
-    }
-}
-
-
-template <typename Container>
-const Payload* find_in(const Container& c, string name)
-{
-    int size_ = c.size();
-
-    for (int i = 0; i < size_; i++)
-    {
-        if (c[i].name == name)
-        {
-            return &c[i];
-        }
-    }
-
-    return nullptr;
-}
-
-template <class C> void print(C & v) 
+template <class C> void testStack(C && s) 
 { 
-    cout << "print:"; 
+    cout<< (s.empty()?"is":"not") << " empty; "; 
+    s.push("apple"); 
+    s.push("pear"); 
+    s.pop(); 
+    cout << "size=" << s.size() << " top=" << s.top().name << '\n'; 
+} 
 
-    for ( auto & i : v )  
-        cout << ' ' << i.name;
-    
-    cout << '\n'; 
-}
+template <class C> void testQueue(C && s) 
+{ 
+    cout<< (s.empty()?"is":"not") << " empty; "; 
+    s.push("apple"); 
+    s.push("pear"); 
+    s.pop(); 
+    cout << "size=" << s.size() << " front=" << s.front().name << " back=" << s.back().name << '\n'; 
+} 
 
 int main() 
 { 
-    Vector v; 
-    for(int i=0; i<10; i++) 
-        v.push_back(std::to_string(i));  
-    modify_it(v);
-    print(v); 
+    testStack(StackList<Payload>()); 
+    testStack(StackVector<Payload>()); 
+    testQueue(QueueList<Payload>()); 
 
-    List s; 
-    for(int i=0; i<10; i++) 
-        s.push_front(std::to_string(i));  
-    modify_it(s);
-    print(s); 
+    QueueVector<Payload> qv; 
+    qv.push("banana"); 
+    testQueue(qv); 
+    cout<<qv[0].name<<'\n'; 
+
+    return 0;
 }
