@@ -13,12 +13,12 @@ class StackVector
     public:
         bool empty() const
         {
-            return stackvector.empty()
+            return stackvector.empty();
         }
 
         int size() const
         {
-            return stackvector.size()
+            return stackvector.size();
         }
 
         T& top()
@@ -46,3 +46,4 @@ class StackVector
             
             stackvector.pop_back();
         }
+};

@@ -9,8 +9,8 @@ class QueueVector
 {
     private:
         T* queuevector;
-        int front;
-        int back;
+        int _front;
+        int _back;
         int _size;
         int _capacity;
 
@@ -20,22 +20,22 @@ class QueueVector
 
             for (int i = 0; i < _size; i++)
             {
-                int index = (front + i) % _capacity;
+                int index = (_front + i) % _capacity;
                 newVector[i] = queuevector[index];
             }
 
             delete[] queuevector;
             queuevector = newVector;
             _capacity = newCapacity;
-            front = 0;
-            back = _size;
+            _front = 0;
+            _back = _size;
         }
 
     public:
         QueueVector()
         {
-            front = 0;
-            back = 0;
+            _front = 0;
+            _back = 0;
             _size = 0;
             _capacity = 4;
             queuevector = new T[_capacity];
@@ -63,8 +63,8 @@ class QueueVector
                 resize(_capacity * 2);
             }
             
-            queuevector[back] = value;
-            back = (back + 1) % _capacity;
+            queuevector[_back] = value;
+            _back = (_back + 1) % _capacity;
             _size += 1;
         }
 
@@ -76,7 +76,7 @@ class QueueVector
                 throw std::out_of_range("Error! QueueVector is empty");
             }
             
-            front = (front + 1) % _capacity;
+            _front = (_front + 1) % _capacity;
             _size--;
         }
 
@@ -87,7 +87,7 @@ class QueueVector
                 throw std::out_of_range("Error! QueueVector is empty");
             }
 
-            return queuelist[front];
+            return queuevector[_front];
         }
 
         T& back()
@@ -97,7 +97,8 @@ class QueueVector
                 throw std::out_of_range("Error! QueueVector is empty");
             }
 
-            return queuelist[back];
+            int pos = (_back - 1 + _capacity) % _capacity;
+            return queuevector[pos];
         }
 
         T& operator[](int i) 
@@ -105,7 +106,7 @@ class QueueVector
             if (i < 0 || i >= _size)
                 throw std::out_of_range("Error! QueueVector index out of range");
 
-            int pos = (front + i) % _capacity;
+            int pos = (_front + i) % _capacity;
 
             return queuevector[pos];
         }
@@ -114,5 +115,4 @@ class QueueVector
         {
             delete[] queuevector;
         }
-
 };

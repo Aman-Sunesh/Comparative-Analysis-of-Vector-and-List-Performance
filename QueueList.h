@@ -57,3 +57,4 @@ class QueueList
 
             return queuelist.back();
         }
+};

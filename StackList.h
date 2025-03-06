@@ -31,6 +31,7 @@ class StackList
             return stacklist.front();
         }
 
+
         void push(const T& value)
         {
             stacklist.push_front(value);
@@ -46,3 +47,4 @@ class StackList
             
             stacklist.pop_front();
         }
+    };
